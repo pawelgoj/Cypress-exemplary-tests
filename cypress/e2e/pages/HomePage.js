@@ -7,8 +7,9 @@ export class HomePage {
     this.createAnAccountButton =
       ".header.panel [href='https://magento.softwaretestingboard.com/customer/account/create/']";
     this.cartButton = ".showcart";
+    this.loggedInUser = ".header.panel .logged-in";
   }
-  
+
   clickCartButton() {
     cy.get(this.cartButton).click();
   }
@@ -18,11 +19,16 @@ export class HomePage {
   }
 
   clickSignInButton() {
-    cy.get(this.clickSignInButton).click();
+    cy.get(this.signInButton).click();
   }
 
   checkIsHomePage(url) {
     let currentUrl = cy.url();
     currentUrl.should("equal", url);
+  }
+
+  checkUserIsLogged(name, lastName) {
+    cy.get(this.loggedInUser).should("include.text", name);
+    cy.get(this.loggedInUser).should("include.text", lastName);
   }
 }
