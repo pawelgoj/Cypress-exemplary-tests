@@ -21,11 +21,9 @@ describe("Registration and Login", () => {
   });
 
   it("Register new account", () => {
-    const page_url = "https://magento.softwaretestingboard.com/";
-    cy.visit(page_url);
+    cy.visit("/");
 
     const homePage = new HomePage();
-    homePage.checkIsHomePage(page_url);
     homePage.clickCreateAccountButton();
 
     const createAccountPage = new CreateAccountPage();
@@ -47,10 +45,8 @@ describe("Registration and Login", () => {
     /*
         The user must be registered before.
     */
-    const page_url = "https://magento.softwaretestingboard.com/";
-    cy.visit(page_url);
+    cy.visit("/");
     const homePage = new HomePage();
-    homePage.checkIsHomePage(page_url);
     homePage.clickSignInButton();
 
     const signInPage = new SignInPage();

@@ -1,9 +1,10 @@
-# Cypress-exemplary-tests
+# Cypress exemplary tests
 
-Cypress exemplary tests
+Automated tests written in Cypress.
 
-# Testaces to automatization
 
-- [] Create acount
-- [] Sing In
-- [] Buy one item
+
+## Tools
+- JavaScript
+- Cypress 12.9.0
+- faker-js
