@@ -1,0 +1,28 @@
+{
+  "name": "testy_pawel_goj",
+  "version": "1.0.0",
+  "description": "Automation tests written by pawel GOj",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawelgoj/Cypress-exemplary-tests.git"
+  },
+  "keywords": [
+    "test",
+    "Cypress"
+  ],
+  "author": "Pawel Goj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pawelgoj/Cypress-exemplary-tests/issues"
+  },
+  "homepage": "https://github.com/pawelgoj/Cypress-exemplary-tests#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "cypress": "^12.9.0",
+    "prettier": "2.8.7"
+  }
+}
