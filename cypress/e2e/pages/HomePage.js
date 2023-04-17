@@ -8,6 +8,10 @@ export class HomePage {
       ".header.panel [href='https://magento.softwaretestingboard.com/customer/account/create/']";
     this.cartButton = ".showcart";
     this.loggedInUser = ".header.panel .logged-in";
+    this.listOfHotSellersProducts = ".product-items";
+    this.buttonInHotSellersList = 'button[title="Add to Cart"]';
+    this.firstColorLocator = "[option-id='50']";
+    this.productNameLocator = ".product-item-link";
   }
 
   clickCartButton() {
@@ -30,5 +34,27 @@ export class HomePage {
   checkUserIsLogged(name, lastName) {
     cy.get(this.loggedInUser).should("include.text", name);
     cy.get(this.loggedInUser).should("include.text", lastName);
+  }
+  addToCartProduct(nrProductInList) {
+    cy.get(this.listOfHotSellersProducts)
+      .find(`li:nth-child(${nrProductInList}) > .product-item-info`)
+      .find(this.firstColorLocator, { timeout: 30000 })
+      .scrollIntoView();
+
+    cy.get(this.listOfHotSellersProducts)
+      .trigger("mouseover")
+      .find(this.buttonInHotSellersList, { timeout: 30000 })
+      .should("be.visible");
+
+    cy.get(this.listOfHotSellersProducts)
+      .find(`li:nth-child(${nrProductInList}) > .product-item-info`)
+      .find(this.productNameLocator);
+
+    cy.get(this.listOfHotSellersProducts)
+    .find(`li:nth-child(${nrProductInList}) > .product-item-info`)
+    .trigger("mouseover")
+    .find(this.buttonInHotSellersList, { timeout: 30000 })
+    .click("bottomLeft", { force: true });
+
   }
 }

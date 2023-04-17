@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 export class SignInPage {
   constructor() {
     this.emailField = "#email";

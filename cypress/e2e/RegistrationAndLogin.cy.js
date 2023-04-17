@@ -55,4 +55,10 @@ describe("Registration and Login", () => {
     signInPage.clickSignInButton();
     homePage.checkUserIsLogged(name, lastName);
   });
+
+  it("Add first item from 'Hot Sellers' to cart", () => {
+    cy.visit("/");
+    const homePage = new HomePage();
+    homePage.addToCartProducts(1);
+  });
 });
