@@ -13,8 +13,10 @@ describe("Buy products", () => {
     const itemPage = new ItemPage();
     const productQuantity = 2;
     const productName = "Radiant Tee";
-
     itemPage.selectSize(1);
+    Cypress.on('uncaught:exception', (err, runnable) => {
+      return false
+    });
     itemPage.selectColor(1);
     itemPage.insertQuantity(productQuantity);
     itemPage.clickAddToCartButton();

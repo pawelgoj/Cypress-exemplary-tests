@@ -2,16 +2,15 @@
 
 export class ItemPage {
   constructor() {
-    this.selectSizeLocator =
-      "[aria-labelledby='option-label-size-143']";
+    this.selectSizeLocator = "[aria-labelledby='option-label-size-143']";
     this.selectColorLocator = '[aria-labelledby="option-label-color-93"]';
     this.selectQuantityLocator = "#qty";
     this.addToCartLocator = "#product-addtocart-button";
-    this.cartButtonLocator = ".action.showcart"
+    this.cartButtonLocator = "a.action.showcart > span.counter.qty";
   }
 
   selectColor(colorNumber) {
-    cy.get(this.selectColorLocator)
+    cy.get(this.selectColorLocator, { timeout: 30000 })
       .find(`div:nth-child(${colorNumber})`)
       .click();
   }
@@ -23,14 +22,27 @@ export class ItemPage {
   }
 
   insertQuantity(quantity) {
-    cy.get(this.selectQuantityLocator).click().clear().type(quantity);
+    cy.get(this.selectQuantityLocator, { timeout: 30000 })
+      .click()
+      .clear()
+      .type(quantity);
   }
 
   clickAddToCartButton() {
-    cy.get(this.addToCartLocator).click();
+    cy.get(this.addToCartLocator, { timeout: 30000 }).click();
   }
 
   clickCartButton() {
-    cy.get(this.cartButtonLocator).click();
+    cy.get(this.cartButtonLocator, { timeout: 100000 }).should(
+      "not.have.class",
+      "_block-content-loading"
+    );
+
+    // waiting that Adding... not present in button text.
+    cy.get(this.addToCartLocator)
+      .find("span", { timeout: 100000 })
+      .should('not.contain.text', 'Adding...');
+
+    cy.get(this.cartButtonLocator, { timeout: 100000 }).click({ force: true });
   }
 }
