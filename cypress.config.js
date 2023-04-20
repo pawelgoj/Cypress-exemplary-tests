@@ -5,6 +5,7 @@ module.exports = defineConfig({
     baseUrl: "https://magento.softwaretestingboard.com",
     includeShadowDom: true,
     chromeWebSecurity: true,
+    defaultCommandTimeout: 100000,
     viewportHeight: 1080,
     viewportWidth: 1920,
     setupNodeEvents(on, config) {

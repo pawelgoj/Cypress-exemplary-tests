@@ -12,10 +12,7 @@ export class Carttooltip {
   }
 
   checkProductQuantity(quantity) {
-    cy.get(this.productQuantityLocator)
-      .shadow("div.text-field-container")
-      .find("div > div")
-      .should("include.text", quantity);
+    cy.get(this.productQuantityLocator).should("have.value", quantity);
   }
 
   clickProceedToCheckoutButton() {

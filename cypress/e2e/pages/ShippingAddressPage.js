@@ -2,19 +2,20 @@
 
 export class ShippingAddressPage {
   constructor() {
-    this.fieldEmailAddressLocator = "#customer-email[aria-required='true']";
-    this.fieldFirstNameLocator = "#login-email";
+    this.fieldEmailAddressLocator =
+      "fieldset div.control > input#customer-email.input-text";
+    this.fieldFirstNameLocator = "input[name='firstname']";
     this.fieldLastNameLocator = "input[name='lastname']";
     this.fieldCompanyLocator = "input[name='company']";
     this.fieldStreetAddress1 = "input[name='street[0]']";
     this.fieldStreetAddress2 = "input[name='street[1]']";
     this.fieldStreetAddress3 = "input[name='street[2]']";
-    this.fieldCityLocator = "select[name='City']";
+    this.fieldCityLocator = "input[name='city']";
     this.stateProvinceSelectLocator = "select[name='region_id']";
     this.fieldZipCodeLocator = "input[name='postcode']";
     this.fieldCountryLocator = "select[name='country_id']";
     this.fieldPhoneNumber = "input[name='telephone']";
-    this.radioButtonShippingMethodFixedLocator = "input[name='ko_unique_1']";
+    this.radioButtonShippingMethodFixedLocator = "input.radio";
     this.radioButtonShippingmethodTableRateLocator =
       "input[name='ko_unique_2']";
     this.buttonNextLocator = "button.button";

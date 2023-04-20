@@ -51,10 +51,9 @@ export class HomePage {
       .find(this.productNameLocator);
 
     cy.get(this.listOfHotSellersProducts)
-    .find(`li:nth-child(${nrProductInList}) > .product-item-info`)
-    .trigger("mouseover")
-    .find(this.buttonInHotSellersList, { timeout: 30000 })
-    .click("bottomLeft", { force: true });
-
+      .find(`li:nth-child(${nrProductInList}) > .product-item-info`)
+      .trigger("mouseover")
+      .find(this.buttonInHotSellersList, { timeout: 30000 })
+      .click("bottomLeft", { force: true });
   }
 }
