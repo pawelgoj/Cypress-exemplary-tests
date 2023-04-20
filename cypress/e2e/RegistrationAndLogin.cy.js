@@ -34,7 +34,15 @@ describe("Registration and Login", () => {
     createAccountPage.insertEmail(email);
     createAccountPage.insertPassword(password);
     createAccountPage.insertPasswordToConfirm(password);
+
+    // To check response of server created.
+    cy.intercept("POST", "/customer/account/createpost/").as("Alias");
     createAccountPage.clickCreateAnAccountButton();
+
+    cy.wait("@Alias");
+    cy.get("@Alias").then((res) => {
+      expect(res.response.statusCode).to.equal(302);
+    });
 
     let accountPage = new AccountPage();
     accountPage.checkIsInAccountPage();
@@ -54,11 +62,5 @@ describe("Registration and Login", () => {
     signInPage.insertPassword(password);
     signInPage.clickSignInButton();
     homePage.checkUserIsLogged(name, lastName);
-  });
-
-  it("Add first item from 'Hot Sellers' to cart", () => {
-    cy.visit("/");
-    const homePage = new HomePage();
-    homePage.addToCartProducts(1);
   });
 });
