@@ -2,16 +2,16 @@
 
 import { faker } from "@faker-js/faker";
 
-import { HomePage } from "./pages/HomePage.js";
-import { CreateAccountPage } from "./pages/CreateAccountPage.js";
-import { AccountPage } from "./pages/AccountPage.js";
-import { SignInPage } from "./pages/SignInPage.js";
+import { HomePage } from "./pages/HomePage";
+import { CreateAccountPage } from "./pages/CreateAccountPage";
+import { AccountPage } from "./pages/AccountPage";
+import { SignInPage } from "./pages/SignInPage";
 
 describe("Registration and Login", () => {
-  let name;
-  let lastName;
-  let email;
-  let password;
+  let name: string;
+  let lastName: string;
+  let email: string;
+  let password: string;
 
   before(function () {
     name = faker.name.firstName();
@@ -23,10 +23,10 @@ describe("Registration and Login", () => {
   it("Register new account", () => {
     cy.visit("/");
 
-    const homePage = new HomePage();
+    const homePage: HomePage = new HomePage();
     homePage.clickCreateAccountButton();
 
-    const createAccountPage = new CreateAccountPage();
+    const createAccountPage: CreateAccountPage = new CreateAccountPage();
 
     createAccountPage.insertFirstName(name);
     createAccountPage.insertLastName(lastName);
@@ -40,11 +40,11 @@ describe("Registration and Login", () => {
     createAccountPage.clickCreateAnAccountButton();
 
     cy.wait("@Alias");
-    cy.get("@Alias").then((res) => {
+    cy.get("@Alias").then((res: any) => {
       expect(res.response.statusCode).to.equal(302);
     });
 
-    let accountPage = new AccountPage();
+    let accountPage: AccountPage = new AccountPage();
     accountPage.checkIsInAccountPage();
     accountPage.checkMyAccountInformation(name, lastName, email, true);
   });
@@ -54,10 +54,10 @@ describe("Registration and Login", () => {
         The user must be registered before.
     */
     cy.visit("/");
-    const homePage = new HomePage();
+    const homePage: HomePage = new HomePage();
     homePage.clickSignInButton();
 
-    const signInPage = new SignInPage();
+    const signInPage: SignInPage = new SignInPage();
     signInPage.insertEmail(email);
     signInPage.insertPassword(password);
     signInPage.clickSignInButton();

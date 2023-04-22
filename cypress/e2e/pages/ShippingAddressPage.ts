@@ -1,6 +1,22 @@
 /// <reference types="cypress" />
 
 export class ShippingAddressPage {
+  fieldEmailAddressLocator: string;
+  fieldFirstNameLocator: string;
+  fieldLastNameLocator: string;
+  fieldCompanyLocator: string;
+  fieldStreetAddress1: string;
+  fieldStreetAddress2: string;
+  fieldStreetAddress3: string;
+  fieldCityLocator: string;
+  stateProvinceSelectLocator: string;
+  fieldZipCodeLocator: string;
+  fieldCountryLocator: string;
+  fieldPhoneNumber: string;
+  radioButtonShippingMethodFixedLocator: string;
+  radioButtonShippingmethodTableRateLocator: string;
+  buttonNextLocator: string;
+
   constructor() {
     this.fieldEmailAddressLocator =
       "fieldset div.control > input#customer-email.input-text";
@@ -22,14 +38,14 @@ export class ShippingAddressPage {
   }
 
   fillForm(
-    email,
-    firstName,
-    lastName,
-    Company,
-    streetAddress,
-    city,
-    zipCode,
-    phone
+    email: string,
+    firstName: string,
+    lastName: string,
+    Company: string,
+    streetAddress: string,
+    city: string,
+    zipCode: string,
+    phone: string
   ) {
     cy.get(this.fieldEmailAddressLocator).type(email);
     cy.get(this.fieldFirstNameLocator).type(firstName);

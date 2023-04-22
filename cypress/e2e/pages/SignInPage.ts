@@ -1,6 +1,11 @@
 /// <reference types="cypress" />
 
 export class SignInPage {
+  emailField: string;
+  passwordField: string;
+  signInButton: string;
+
+  typingDelay: number;
   constructor() {
     this.emailField = "#email";
     this.passwordField = "[name='login[password]']";
@@ -9,12 +14,12 @@ export class SignInPage {
     this.typingDelay = 50;
   }
 
-  insertEmail(email) {
+  insertEmail(email: string) {
     let textField = cy.get(this.emailField).click();
     textField.type(email, { delay: this.typingDelay });
   }
 
-  insertPassword(password) {
+  insertPassword(password: string) {
     let textField = cy.get(this.passwordField).click();
     textField.type(password, { delay: this.typingDelay });
   }

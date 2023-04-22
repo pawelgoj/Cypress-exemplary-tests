@@ -2,6 +2,8 @@
 
 
 export class SuccessShoppingPage {
+  titleOnPageLocator: string;
+
   constructor() {
     this.titleOnPageLocator = "h1.page-title > span";
   }

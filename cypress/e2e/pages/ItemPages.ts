@@ -1,6 +1,12 @@
 /// <reference types="cypress" />
 
 export class ItemPage {
+  selectSizeLocator: string;
+  selectColorLocator: string;
+  selectQuantityLocator: string;
+  addToCartLocator: string;
+  cartButtonLocator: string;
+
   constructor() {
     this.selectSizeLocator = "[aria-labelledby='option-label-size-143']";
     this.selectColorLocator = '[aria-labelledby="option-label-color-93"]';
@@ -9,23 +15,24 @@ export class ItemPage {
     this.cartButtonLocator = "a.action.showcart > span.counter.qty";
   }
 
-  selectColor(colorNumber) {
+  selectColor(colorNumber: number) {
     cy.get(this.selectColorLocator, { timeout: 30000 })
       .find(`div:nth-child(${colorNumber})`)
       .click();
   }
 
-  selectSize(sizeNumber) {
+  selectSize(sizeNumber: number) {
     cy.get(this.selectSizeLocator, { timeout: 30000 })
       .find(`div:nth-child(${sizeNumber})`, { timeout: 30000 })
       .click();
   }
 
-  insertQuantity(quantity) {
+  insertQuantity(quantity: number) {
+    const _quantity: string = String(quantity);
     cy.get(this.selectQuantityLocator, { timeout: 30000 })
       .click()
       .clear()
-      .type(quantity);
+      .type(_quantity);
   }
 
   clickAddToCartButton() {

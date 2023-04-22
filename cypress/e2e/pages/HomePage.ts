@@ -1,6 +1,15 @@
 /// <reference types="cypress" />
 
 export class HomePage {
+  signInButton: string;
+  createAnAccountButton: string;
+  cartButton: string;
+  productNameLocator: string;
+  firstColorLocator: string;
+  buttonInHotSellersList: string;
+  listOfHotSellersProducts: string;
+  loggedInUser: string;
+
   constructor() {
     this.signInButton =
       ".header.panel [href='https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/']";
@@ -26,16 +35,16 @@ export class HomePage {
     cy.get(this.signInButton).click();
   }
 
-  checkIsHomePage(url) {
+  checkIsHomePage(url: string) {
     let currentUrl = cy.url();
     currentUrl.should("equal", url);
   }
 
-  checkUserIsLogged(name, lastName) {
+  checkUserIsLogged(name: string, lastName: string) {
     cy.get(this.loggedInUser).should("include.text", name);
     cy.get(this.loggedInUser).should("include.text", lastName);
   }
-  addToCartProduct(nrProductInList) {
+  addToCartProduct(nrProductInList: number) {
     cy.get(this.listOfHotSellersProducts)
       .find(`li:nth-child(${nrProductInList}) > .product-item-info`)
       .find(this.firstColorLocator, { timeout: 30000 })
